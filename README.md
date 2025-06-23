@@ -1,2 +1,2 @@
 # codeby-devops
-Doing homework from Google
+Doing homework from CodeBy
