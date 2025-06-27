@@ -1,0 +1,15 @@
+[Unit]
+Description=Daemon Nginx
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+OOMScoreAdjust=-100
+ExecStart=/usr/sbin/nginx
+ExecStop=/usr/sbin/nginx
+ExecReload=/usr/sbin/nginx
+TimeoutSec=100
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
