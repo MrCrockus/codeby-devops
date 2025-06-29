@@ -1,0 +1,25 @@
+Script started on 2025-06-27 19:57:47+07:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="169" LINES="45"]
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ java --vr[Kersion
+[?2004lopenjdk 11.0.27 2025-04-15
+OpenJDK Runtime Environment (build 11.0.27+6-post-Ubuntu-0ubuntu122.04)
+OpenJDK 64-Bit Server VM (build 11.0.27+6-post-Ubuntu-0ubuntu122.04, mixed mode, sharing)
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ [7msudo update-alternatives --config java [27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo update-alternatives --config java 
+[?2004l[sudo] password for ilya: 
+There are 2 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                         Priority   Status
+------------------------------------------------------------
+* 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java   1111      auto mode
+  1            /opt/jdk-17.0.12/bin/java                     1         manual mode
+  2            /usr/lib/jvm/java-11-openjdk-amd64/bin/java   1111      manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 1
+update-alternatives: using /opt/jdk-17.0.12/bin/java to provide /usr/bin/java (java) in manual mode
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ java --version
+[?2004ljava 17.0.12 2024-07-16 LTS
+Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.12+8-LTS-286, mixed mode, sharing)
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2025-06-27 19:58:21+07:00 [COMMAND_EXIT_CODE="0"]

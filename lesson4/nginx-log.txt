@@ -1,0 +1,194 @@
+Script started on 2025-06-27 20:52:17+07:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="169" LINES="45"]
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ systemctl status nginx
+[?2004l[?1h=[0;1;31m×[0m nginx.service - A high performance web server and a reverse proxy server[m
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)[m
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2025-06-27 20:44:25 +07; 8min ago[m
+       Docs: man:nginx(8)[m
+        CPU: 210ms[m
+[m
+июн 27 20:44:24 ilya-vm nginx[10527]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:44:24 ilya-vm nginx[10527]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:44:24 ilya-vm nginx[10527]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:44:24 ilya-vm nginx[10527]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:44:25 ilya-vm nginx[10527]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:44:25 ilya-vm nginx[10527]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:44:25 ilya-vm nginx[10527]: nginx: [emerg] still could not bind()[m
+июн 27 20:44:25 ilya-vm systemd[1]: [0;1;39m[0;1;31m[0;1;39mnginx.service: Control process exited, code=exited, status=1/FAILURE[0m[m
+июн 27 20:44:25 ilya-vm systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mnginx.service: Failed with result 'exit-code'.[0m[m
+июн 27 20:44:25 ilya-vm systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start A high performance web server and a reverse proxy server.[0m[m
+[K[?1l>[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ systemctl status nginx[C[1P nginx[1P nginx[1P nginx[1P nginx[1P nginx[1P nginxr nginxe nginxs nginxt nginxa nginxr nginxt nginx
+[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ syste[K[K[K[K[Ksudo systemctl status nginx
+[?2004l[sudo] password for ilya: 
+[?1h=[0;1;32m●[0m nginx.service - A high performance web server and a reverse proxy server[m
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)[m
+     Active: [0;1;32mactive (running)[0m since Fri 2025-06-27 20:52:43 +07; 11s ago[m
+       Docs: man:nginx(8)[m
+    Process: 10889 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)[m
+    Process: 10890 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)[m
+   Main PID: 10891 (nginx)[m
+      Tasks: 3 (limit: 2567)[m
+     Memory: 5.0M[m
+        CPU: 64ms[m
+     CGroup: /system.slice/nginx.service[m
+             ├─10891 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"[m
+             ├─10892 "nginx: worker process" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""[m
+             └─10893 "nginx: worker process" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""[m
+[m
+июн 27 20:52:43 ilya-vm systemd[1]: Starting A high performance web server and a reverse proxy server...[m
+июн 27 20:52:43 ilya-vm systemd[1]: Started A high performance web server and a reverse proxy server.[m
+[K[?1l>[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl status nginx[1P nginx[1P nginx[1P nginx[1P nginxo nginxp nginx
+[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ cat [7m/etc/ufw/applications.d/nginx.ini[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C/etc/ufw/applications.d/nginx.ini
+[?2004l[Nginx HTTP]
+title=Web Server
+description=Enable NGINX HTTP traffic
+ports=80/tcp
+
+[Nginx HTTPS] \
+title=Web Server (HTTPS) \
+description=Enable NGINX HTTPS traffic
+ports=443/tcp
+
+[Nginx Full]
+title=Web Server (HTTP,HTTPS)
+description=Enable NGINX HTTP and HTTPS traffic
+ports=80,443/tcp
+
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ touch myunit.service
+[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ nano myunit,ser[K[K[K[K.service
+[?2004l[?2004h[?1049h[22;0;0t[1;45r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[43;78H(B[0;7m[ Reading... ](B[m[43;77H(B[0;7m[ Read 0 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                                  myunit.service                                                                           [1;168H(B[m[44d(B[0;7m^G(B[m Help[44;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[44;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[44;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous[45d(B[0;7m^X(B[m Exit[45;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[45;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[45;113H(B[0;7mM-6(B[m Copy[45;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next[2d[?12l[?25h[?25l[?12l[?25h[?25l[1;96H(B[0;7m*[43d(B[m[K[1;168H[2d(B[0;1m[32m[Unit][3d[39m(B[mDescription=Daemon Nginx[5d(B[0;1m[32m[Service][6d[39m(B[mType=forking[7dPIDFile=/run/nginx.pid[8dOOMScoreAdjust=-100[9dExecStart=/usr/sbin/nginx[10dExecStop=/usr/sbin/nginx[11dExecReload=/usr/sbin/nginx[12dTimeoutSec=100[13dRestart=always[15d(B[0;1m[32m[Install][16d[39m(B[mWantedBy=multi-user.target[18d[?12l[?25h[?25l[A[?12l[?25h[?25l[43d(B[0;7mSave modified buffer?                                                                                                                                                    [44;1H Y(B[m Yes[K[45d(B[0;7m N(B[m No  [45;18H(B[0;7mC(B[m Cancel[K[43;23H[?12l[?25h[?25l[44d(B[0;7m^G(B[m Help[44;43H(B[0;7mM-D(B[m DOS Format[44;85H(B[0;7mM-A(B[m Append[44;127H(B[0;7mM-B(B[m Backup File[45d(B[0;7m^C(B[m Cancel[17G         [45;43H(B[0;7mM-M(B[m Mac Format[45;85H(B[0;7mM-P(B[m Prepend[45;127H(B[0;7m^T(B[m Browse[43d(B[0;7mFile Name to Write: myunit.service(B[m[?12l[?25h[?25l[43;77H[1K (B[0;7m[ Writing... ](B[m[K[1;96H(B[0;7m [168G(B[m[43;76H(B[0;7m[ Wrote 15 lines ](B[m[J[45d[?12l[?25h[45;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ mv [K[K[Ksudo mv m[K./myunit.service /etc/systemd/system
+[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl status myunit
+[?2004l[?1h=[0;1;31mWarning:[0m The unit file, source configuration file or drop-ins of myunit.service changed on disk. Run 'systemctl daemon-reload' to reload units.[m
+[0;1;31m×[0m myunit.service - Daemon Nginx[m
+     Loaded: loaded (/etc/systemd/system/myunit.service; disabled; vendor preset: enabled)[m
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2025-06-27 20:49:03 +07; 5min ago[m
+   Main PID: 10632 (code=exited, status=0/SUCCESS)[m
+        CPU: 89ms[m
+[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:49:03 ilya-vm nginx[10774]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:49:03 ilya-vm nginx[10774]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:49:03 ilya-vm nginx[10774]: nginx: [emerg] still could not bind()[m
+июн 27 20:49:03 ilya-vm systemd[1]: [0;1;39m[0;1;31m[0;1;39mmyunit.service: Control process exited, code=exited, status=1/FAILURE[0m[m
+июн 27 20:49:03 ilya-vm systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmyunit.service: Failed with result 'exit-code'.[0m[m
+июн 27 20:49:03 ilya-vm systemd[1]: Stopped Daemon Nginx.[m
+[K[?1l>[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl status myunit[C[1P myunit[1P myunit[1P myunit[1P myunit[1P myunit[1P myunite myunitn myunita myunitb myunitl myunite myunit[C myunit
+[?2004lCreated symlink /etc/systemd/system/multi-user.target.wants/myunit.service → /etc/systemd/system/myunit.service.
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl enable  myunit[1Pstatus[C[C[C[C[C[C[C
+[?2004l[?1h=[0;1;31m×[0m myunit.service - Daemon Nginx[m
+     Loaded: loaded (/etc/systemd/system/myunit.service; enabled; vendor preset: enabled)[m
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2025-06-27 20:49:03 +07; 6min ago[m
+   Main PID: 10632 (code=exited, status=0/SUCCESS)[m
+        CPU: 89ms[m
+[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:49:02 ilya-vm nginx[10774]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:49:03 ilya-vm nginx[10774]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:49:03 ilya-vm nginx[10774]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:49:03 ilya-vm nginx[10774]: nginx: [emerg] still could not bind()[m
+июн 27 20:49:03 ilya-vm systemd[1]: [0;1;39m[0;1;31m[0;1;39mmyunit.service: Control process exited, code=exited, status=1/FAILURE[0m[m
+июн 27 20:49:03 ilya-vm systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmyunit.service: Failed with result 'exit-code'.[0m[m
+июн 27 20:49:03 ilya-vm systemd[1]: Stopped Daemon Nginx.[m
+[K[?1l>[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl status myunit[1P myunit[1P myunit[1P myunit[1P myunit[1P myunit[1P myunitr myunite myunits myunitt myunita myunitt myunit[1P myunitr myunitt myunit
+[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl restart myunit[1Pstatus[C[C[C[C[C[C[C
+[?2004l[?1h=[0;1;32m●[0m myunit.service - Daemon Nginx[m
+     Loaded: loaded (/etc/systemd/system/myunit.service; enabled; vendor preset: enabled)[m
+     Active: [0;1;32mactive (running)[0m since Fri 2025-06-27 20:55:38 +07; 1s ago[m
+    Process: 11036 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)[m
+   Main PID: 11037 (nginx)[m
+      Tasks: 3 (limit: 2567)[m
+     Memory: 4.1M[m
+        CPU: 32ms[m
+     CGroup: /system.slice/myunit.service[m
+             ├─11037 "nginx: master process /usr/sbin/nginx"[m
+             ├─11038 "nginx: worker process"[m
+             └─11039 "nginx: worker process"[m
+[m
+июн 27 20:55:38 ilya-vm systemd[1]: Starting Daemon Nginx...[m
+июн 27 20:55:38 ilya-vm systemd[1]: Started Daemon Nginx.[m
+[K[?1l>[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ [7msudo netstat -tulpn[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo netstat -tulpn
+[?2004lActive Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      1071/postgres       
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      11037/nginx: master 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3271/sshd: /usr/sbi 
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      687/systemd-resolve 
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      946/redis-server 12 
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      941/cupsd           
+tcp6       0      0 ::1:6379                :::*                    LISTEN      946/redis-server 12 
+tcp6       0      0 :::80                   :::*                    LISTEN      11037/nginx: master 
+tcp6       0      0 :::22                   :::*                    LISTEN      3271/sshd: /usr/sbi 
+tcp6       0      0 ::1:631                 :::*                    LISTEN      941/cupsd           
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           845/avahi-daemon: r 
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           687/systemd-resolve 
+udp        0      0 0.0.0.0:47355           0.0.0.0:*                           845/avahi-daemon: r 
+udp6       0      0 :::5353                 :::*                                845/avahi-daemon: r 
+udp6       0      0 :::51374                :::*                                845/avahi-daemon: r 
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2025-06-27 20:56:06+07:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2025-06-27 20:58:17+07:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="169" LINES="45"]
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ exitsudo netstat -tulpnsystemctl status myunit[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pnetstat -tulpn
+[?2004l[sudo] password for ilya: 
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      1071/postgres       
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      11095/nginx: master 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3271/sshd: /usr/sbi 
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      687/systemd-resolve 
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      946/redis-server 12 
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      941/cupsd           
+tcp6       0      0 ::1:6379                :::*                    LISTEN      946/redis-server 12 
+tcp6       0      0 :::80                   :::*                    LISTEN      11095/nginx: master 
+tcp6       0      0 :::22                   :::*                    LISTEN      3271/sshd: /usr/sbi 
+tcp6       0      0 ::1:631                 :::*                    LISTEN      941/cupsd           
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           845/avahi-daemon: r 
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           687/systemd-resolve 
+udp        0      0 0.0.0.0:47355           0.0.0.0:*                           845/avahi-daemon: r 
+udp6       0      0 :::5353                 :::*                                845/avahi-daemon: r 
+udp6       0      0 :::51374                :::*                                845/avahi-daemon: r 
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ systemctl[K[K[K[K[K[K[K[K[Ksudo systemctl stop myunit
+[?2004l[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ sudo systemctl stop myunit[K[K[K[K[3Pnetstat -tulpnsystemctl stop my[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ksudo systemctl stop my[3Pnetstat -tulpnsystemctl stop myunit[C[C[1P myunit[1P myunita myunitt myunitu myunits myunit
+[?2004l[?1h=[0;1;31m×[0m myunit.service - Daemon Nginx[m
+     Loaded: loaded (/etc/systemd/system/myunit.service; enabled; vendor preset: enabled)[m
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2025-06-27 20:58:43 +07; 11s ago[m
+    Process: 11094 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)[m
+    Process: 11129 ExecStop=/usr/sbin/nginx [0;1;31m(code=exited, status=1/FAILURE)[0m[m
+   Main PID: 11095 (code=exited, status=0/SUCCESS)[m
+        CPU: 92ms[m
+[m
+июн 27 20:58:42 ilya-vm nginx[11129]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:58:42 ilya-vm nginx[11129]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:58:42 ilya-vm nginx[11129]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:58:42 ilya-vm nginx[11129]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:58:43 ilya-vm nginx[11129]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Unknown error)[m
+июн 27 20:58:43 ilya-vm nginx[11129]: nginx: [emerg] bind() to [::]:80 failed (98: Unknown error)[m
+июн 27 20:58:43 ilya-vm nginx[11129]: nginx: [emerg] still could not bind()[m
+июн 27 20:58:43 ilya-vm systemd[1]: [0;1;39m[0;1;31m[0;1;39mmyunit.service: Control process exited, code=exited, status=1/FAILURE[0m[m
+июн 27 20:58:43 ilya-vm systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmyunit.service: Failed with result 'exit-code'.[0m[m
+июн 27 20:58:43 ilya-vm systemd[1]: Stopped Daemon Nginx.[m
+[K[?1l>[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ cd[K[Ksudo systemctl status myunit[2Pop[C[C[C[C[C[C[C[7Pnetstat -tulpn
+[?2004lActive Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      1071/postgres       
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3271/sshd: /usr/sbi 
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      687/systemd-resolve 
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      946/redis-server 12 
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      941/cupsd           
+tcp6       0      0 ::1:6379                :::*                    LISTEN      946/redis-server 12 
+tcp6       0      0 :::22                   :::*                    LISTEN      3271/sshd: /usr/sbi 
+tcp6       0      0 ::1:631                 :::*                    LISTEN      941/cupsd           
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           845/avahi-daemon: r 
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           687/systemd-resolve 
+udp        0      0 0.0.0.0:47355           0.0.0.0:*                           845/avahi-daemon: r 
+udp6       0      0 :::5353                 :::*                                845/avahi-daemon: r 
+udp6       0      0 :::51374                :::*                                845/avahi-daemon: r 
+[?2004h]0;ilya@ilya-vm: ~[01;32milya@ilya-vm[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2025-06-27 20:59:08+07:00 [COMMAND_EXIT_CODE="0"]
