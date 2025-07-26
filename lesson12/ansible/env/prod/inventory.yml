@@ -1,0 +1,8 @@
+all:
+ hosts:
+  prod:
+   ansible_ssh_host: 192.168.227.134
+ vars:
+  ansible_ssh_user: vagrant
+  ansible_python_interpreter: /usr/bin/python3
+  enviroment: prod
