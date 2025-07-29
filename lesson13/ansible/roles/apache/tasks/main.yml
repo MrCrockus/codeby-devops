@@ -1,0 +1,13 @@
+---
+
+- name: Installing apache
+  package:
+   name: "{{ apache_package_name[ansible_os_family]}}"
+   state: present
+
+- name: Check apache
+  service:
+   name: "{{ apache_service_name[ansible_os_family]}}"
+   state: started
+   enabled: true
+  notify: restart apache
