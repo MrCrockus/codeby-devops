@@ -1,0 +1,13 @@
+---
+
+- name: install mysql
+  package:
+   name: "{{ mysql_package[ansible_os_family]  }}"
+   state: present
+
+- name: mysql check
+  service:
+   name: "{{ mysql_service[ansible_os_family]  }}"
+   state: started
+   enabled: true
+  notify: restart mysql

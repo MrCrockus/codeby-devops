@@ -1,0 +1,11 @@
+---
+
+mysql_package:
+ Debian:
+ - mysql-server
+ CentOS:
+ - mysql-community-server
+
+mysql_service:
+ Debian: mysql
+ CentOS: mysqld

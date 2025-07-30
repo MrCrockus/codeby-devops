@@ -1,0 +1,12 @@
+all:
+ hosts:
+  ubuntu:
+   ansible_ssh_host: 192.168.227.139
+  centos:
+   ansible_ssh_host: 192.168.227.140
+
+ vars:
+  ansible_ssh_user: vagrant
+  ansible_python_interpreter: /usr/bin/python3
+  enviroment: dev
+

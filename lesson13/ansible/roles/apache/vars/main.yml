@@ -1,0 +1,10 @@
+---
+apache_service_name:
+ Debian: apache2
+ CentOS: httpd
+
+apache_package_name:
+ Debian:
+ - apache2
+ CentOS:
+ - httpd
