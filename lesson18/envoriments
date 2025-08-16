@@ -9,8 +9,8 @@ WORDPRESS_DB_HOST=db:3306
 WORDPRESS_DB_USER=wordpress
 WORDPRESS_DB_PASSWORD=wordpress
 WORDPRESS_DB_NAME=wordpress
-WORDPRESS_SITE_URL=http://localhost:8090
-WORDPRESS_HOME=http://localhost:8090
+WORDPRESS_SITE_URL=http://localhost:8080
+WORDPRESS_HOME=http://localhost:8080
 
 NGINX_CONF_PATH=./default.conf
 
