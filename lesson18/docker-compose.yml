@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.0.27
+    volumes:
+      - ${MYSQL_CONF_PATH}:/var/lib/mysql
+    restart: always
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    expose:
+      - 3306
+      - 33060
+  app:
+    image: wordpress:latest
+    volumes:
+      - ${WORDPRESS_CONF_PATH}:/var/www/html
+    restart: always
+    networks:
+      - backend
+      - frontend
+    environment:
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+      - WORDPRESS_SITE_URL=${WORDPRESS_SITE_URL}
+      - WORDPRESS_HOME=${WORDPRESS_HOME}
+
+  proxy:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ${NGINX_CONF_PATH}:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+      - db
+    networks:
+      - frontend
+
+networks:
+  backend:
+   driver: bridge
+  frontend:
+   driver: bridge
