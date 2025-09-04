@@ -1,0 +1,6 @@
+resources:
+  - mysql.yaml
+  - wp.yaml
+  - hpa-wp.yaml
+  
+
