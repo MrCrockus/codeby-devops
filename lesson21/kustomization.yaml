@@ -1,0 +1,8 @@
+resources:
+  - storage.yaml
+  - mysql.yaml
+  - pv-mysql.yaml
+  - pvc-mysql.yaml
+  - wp.yaml
+  - pv-wp.yaml
+  - pvc-wp.yaml
