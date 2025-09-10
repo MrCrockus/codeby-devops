@@ -1,0 +1,7 @@
+resources:
+  - mysql.yaml
+  - wp.yaml
+  - networkpolicy.yaml
+  - diagnostics.yaml
+  
+
