@@ -23,7 +23,7 @@ self-runner на хосте запущен в виде сервиса.
 На Github статус self-runner должен выглядеть следущим образом:
 
 <p align="center">
-<img src="img/selfrunner_git.png" alt="selfrunner_git.png" width="600" >
+<img src="img/selfrunner_github.png" alt="selfrunner_github.png" width="600" >
 </p>
 
 В качестве инструмента был выбран Github Actions.
