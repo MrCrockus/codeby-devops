@@ -1,26 +1,26 @@
-Финальный проект по курсу
+Проект по курсу DevOps: :wave:
 
 Задача:
-Реализовать полный цикл сборки-поставки приложения, используя
-практики CI/CD.
+Реализовать полный цикл сборки-поставки приложения, используя практики CI/CD.
 
 Для того, чтобы ничего не сломать в основной репе, все "махинации" проводились в отдельной репе:
 [codeby_dipl](https://github.com/MrCrockus/codeby_dipl)
 
 Работа представляет из себя следующее:
 При переходе по ссылке по адресу, выводится такая страница.
-<img src="img/app.png" alt="app.png" width="600">
+<img src="img/app.png" alt="app.png" width="500">
+
 Предварительно необходим self-runner, чтобы запускался деплой приложения на хосте после пуша образа контейнера приложения:
 self-runner на хосте запущен в виде сервиса.
-<img src="img/selfrunner.png" alt="selfrunner.png" widht="600">
+<img src="img/selfrunner.png" alt="selfrunner.png" width="500">
 
 На Github статус self-runner должен выглядеть следущим образом:
-<img src="img/selfrunner_git.png" alt="selfrunner_git.png" widht="600">
+<img src="img/selfrunner_git.png" alt="selfrunner_git.png" width="500">
 
 В качестве инструмента был выбран Github Actions.
 Секреты хранятся в Github Actions secrets.
 Используются следущие секреты:
-<img src="img/secrets.png" alt="secrets.png" widht="600">
+<img src="img/secrets.png" alt="secrets.png" width="500">
 
 ```
 DOCKER_USERNAME - логин от DockerHub;
@@ -31,23 +31,22 @@ CONTAINER_NAME - наименование контейнера, который �
 
 Как работает:
 При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
-<img src="img/pipeline.png" alt="pipeline.png" widht="600">
+<img src="img/pipeline.png" alt="pipeline.png" width="500">
 
--	1. Создание образа контейнера и его пуш в репозиторий DockerHub (build_and_push), который реализует следующие этапы:
--		1.1. Выбирается ОС Ubuntu (с тэгом latest)
--		1.2. Устанавливается OpenJDK 17
--		1.3. Выполнятеся сборка приложения с помощью Maven
--		1.4. Собирается Docker образ с помощью Dockerfile
--		1.5. Авторизация в DockerHub
--		1.6. Пуш образа с 2-мя тэгами:
--			1.6.1. Тэг SHA::10 - 10 символов SHA коммита. Позволяет релизовать версионность приложения, которая позволяет, при необходимости, откатиться на предыдущие версии приложения.
-<img src="img/dockerhub.png" alt="dockerhub.png" widht="600">
+1. Создание образа контейнера и его пуш в репозиторий DockerHub (build_and_push), который реализует следующие этапы:
+	- Выбирается ОС Ubuntu (с тэгом latest)
+	- Устанавливается OpenJDK 17
+	- Выполнятеся сборка приложения с помощью Maven
+	- Собирается Docker образ с помощью Dockerfile
+	- Авторизация в Docker
+	- Пуш образа с 2-мя тэгами:
+		- Тэг SHA::10 - 10 символов SHA коммита. Позволяет релизовать версионность приложения, которая позволяет, при необходимости, откатиться на предыдущие версии приложения.
+		- Тэг latest - самый последний собранный образ/
+<img src="img/dockerhub.png" alt="dockerhub.png" width="500">
 
--			1.6.2. Тэг latest - самый последний собранный образ.
--		1.6. Пуш образа с 2-мя тэгами:
--	2. Удаление с хоста предыдщей версии приложения и развертывание новой версии:
--		2.1. На хосте удаляется контейнер и образ контейнера приложения, при его наличии
--		2.2. С репозитория DockerHub устанавливается (пуллится) и зпускается актуальная версия приложения на порту 8080. 
+2. 	Удаление с хоста предыдщей версии приложения и развертывание новой версии:
+	- На хосте удаляется контейнер и образ контейнера приложения, при его наличии
+	- С репозитория DockerHub устанавливается (пуллится) и зпускается актуальная версия приложения на порту 8080	
 
 Об Dockerfile, который исопльзуется для сборки приложения:
 Первый этап (stage build) использует Maven для сборки .jar.
@@ -60,11 +59,14 @@ Prometheus используется для сбора метрик с Node expor
 Grafana используется для визуализации полученных данных/метрик.
 
 Node Exporter собирает и хранит системные метрики по адресу: localhost:9100/metrics или node-exporter:9100/metrics. Prometheus с определенной периодичностью (указаны в правилах) собирает данные метрики. Grafana использует Prometheus как источник данных для их визуализации в виде Дашбордов (графиков). В качестве дашборда используется общедоступный дашборд "Node exporter full" (dashboard_id: 1860)
-<img src="img/Grafana.png" alt="Grafana.png" widht="600">
+<img src="img/Grafana.png" alt="Grafana.png" width="500">
  
 Подсистема мониторинга реализована в виде образов контейнеров, которые собраны с помощью docker compose.
-<img src="img/Docker.png" alt="Docker.png" widht="600">
+<img src="img/Docker.png" alt="Docker.png" width="500">
 
 docker-compose и promethus.yml для сборки подсистемы мониторинга приведены в директории "./monitoring"
 [клик](https://github.com/MrCrockus/codeby-devops/diplom/monitoring)
+
+Way: :lobster: :point_right:  :shark:
+
 !--end!--
