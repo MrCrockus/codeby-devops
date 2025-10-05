@@ -8,20 +8,31 @@
 
 Работа представляет из себя следующее:
 При переходе по ссылке по адресу, выводится такая страница.
-<img src="img/app.png" alt="app.png" width="600" align="center">
+
+<p align="center">
+<img src="img/app.png" alt="app.png" width="600" >
+</p>
 
 Предварительно необходим self-runner, чтобы запускался деплой приложения на хосте после пуша образа контейнера приложения:
 self-runner на хосте запущен в виде сервиса.
-<img src="img/selfrunner.png" alt="selfrunner.png" width="600" align="center">
+
+<p align="center">
+<img src="img/selfrunner.png" alt="selfrunner.png" width="600" >
+</p>
 
 На Github статус self-runner должен выглядеть следущим образом:
 
-<img src="img/selfrunner_git.png" alt="selfrunner_git.png" width="600" align="center">
+<p align="center">
+<img src="img/selfrunner_git.png" alt="selfrunner_git.png" width="600" >
+</p>
 
 В качестве инструмента был выбран Github Actions.
 Секреты хранятся в Github Actions secrets.
 Используются следущие секреты:
-<img src="img/secrets.png" alt="secrets.png" width="600" align="center">
+
+<p align="center">
+<img src="img/secrets.png" alt="secrets.png" width="600" >
+</p>
 
 ```
 DOCKER_USERNAME - логин от DockerHub;
@@ -32,7 +43,10 @@ CONTAINER_NAME - наименование контейнера, который �
 
 Как работает:
 При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
-<img src="img/pipeline.png" alt="pipeline.png" width="600" align="center">
+
+<p align="center">
+<img src="img/pipeline.png" alt="pipeline.png" width="600" >
+</p>
 
 1. Создание образа контейнера и его пуш в репозиторий DockerHub (build_and_push), который реализует следующие этапы:
 	- Выбирается ОС Ubuntu (с тэгом latest)
@@ -44,7 +58,9 @@ CONTAINER_NAME - наименование контейнера, который �
 		- Тэг SHA::10 - 10 символов SHA коммита. Позволяет релизовать версионность приложения, которая позволяет, при необходимости, откатиться на предыдущие версии приложения.
 		- Тэг latest - самый последний собранный образ
 
-<img src="img/dockerhub.png" alt="dockerhub.png" width="600" align="center">
+<p align="center">
+<img src="img/dockerhub.png" alt="dockerhub.png" width="600" >
+</p>
 
 2. 	Удаление с хоста предыдщей версии приложения и развертывание новой версии:
 	- На хосте удаляется контейнер и образ контейнера приложения, при его наличии
@@ -61,10 +77,16 @@ Prometheus используется для сбора метрик с Node expor
 Grafana используется для визуализации полученных данных/метрик.
 
 Node Exporter собирает и хранит системные метрики по адресу: localhost:9100/metrics или node-exporter:9100/metrics. Prometheus с определенной периодичностью (указаны в правилах) собирает данные метрики. Grafana использует Prometheus как источник данных для их визуализации в виде Дашбордов (графиков). В качестве дашборда используется общедоступный дашборд "Node exporter full" (dashboard_id: 1860)
-<img src="img/Grafana.png" alt="Grafana.png" width="600" align="center">
- 
+
+<p align="center">
+<img src="img/Grafana.png" alt="Grafana.png" width="600" >
+</p>
+
 Подсистема мониторинга реализована в виде образов контейнеров, которые собраны с помощью docker compose.
-<img src="img/Docker.png" alt="Docker.png" width="600" align="center">
+
+<p align="center">
+<img src="img/Docker.png" alt="Docker.png" width="600" >
+</p>
 
 docker-compose и promethus.yml для сборки подсистемы мониторинга приведены в директории "./monitoring"
 [клик](https://github.com/MrCrockus/codeby-devops/diplom/monitoring)
