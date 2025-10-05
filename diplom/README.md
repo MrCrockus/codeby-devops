@@ -1,0 +1,67 @@
+Финальный проект по курсу
+
+Задача:
+Реализовать полный цикл сборки-поставки приложения, используя
+практики CI/CD.
+
+Для того, чтобы ничего не сломать в основной репе, все "махинации" проводились в отдельной репе:
+[codeby_dipl](https://github.com/MrCrockus/codeby_dipl)
+```
+Работа представляет из себя следующее:
+При переходе по ссылке по адресу, выводится такая страница.
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/app.png)
+Предварительно необходим self-runner, чтобы запускался деплой приложения на хосте после пуша образа контейнера приложения:
+self-runner на хосте запущен в виде сервиса.
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/selfrunner.png)
+
+На Github статус self-runner должен выглядеть следущим образом:
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/selfrunner_git.png)
+
+В качестве инструмента был выбран Github Actions.
+Секреты хранятся в Github Actions secrets.
+Используются следущие секреты:
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/secrets.png)
+
+DOCKER_USERNAME - логин от DockerHub;
+DOCKER_PASSWORD - пароль от DockerHub;
+DOCKER_REPO - Репозиторий DockerHub, куда пушатся образы собранных контейнеров;
+CONTAINER_NAME - наименование контейнера, который запускается на хосте.
+
+```
+Как работает:
+При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/pipeline.png)
+	1. Создание образа контейнера и его пуш в репозиторий DockerHub (build_and_push), который реализует следующие этапы:
+		1.1. Выбирается ОС Ubuntu (с тэгом latest)
+		1.2. Устанавливается OpenJDK 17
+		1.3. Выполнятеся сборка приложения с помощью Maven
+		1.4. Собирается Docker образ с помощью Dockerfile
+		1.5. Авторизация в DockerHub
+		1.6. Пуш образа с 2-мя тэгами:
+			1.6.1. Тэг SHA::10 - 10 символов SHA коммита. Позволяет релизовать версионность приложения, которая позволяет, при необходимости, откатиться на предыдущие версии приложения.
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/dockerhub.png)
+			1.6.2. Тэг latest - самый последний собранный образ.
+		1.6. Пуш образа с 2-мя тэгами:
+	2. Удаление с хоста предыдщей версии приложения и развертывание новой версии:
+		2.1. На хосте удаляется контейнер и образ контейнера приложения, при его наличии
+		2.2. С репозитория DockerHub устанавливается (пуллится) и зпускается актуальная версия приложения на порту 8080. 
+
+Об Dockerfile, который исопльзуется для сборки приложения:
+Первый этап (stage build) использует Maven для сборки .jar.
+Второй этап использует openjdk:17, в него копируется уже собранный .jar.
+Приложение запускается с помощью команды java -jar app.jar.
+
+Также реализован мониторинг на основе Node exporter, Prometheus и Grafanа.
+Node exporter используется для сбора метрик с хоста где развернуто приложение.
+Prometheus используется для сбора метрик с Node exporter на основе правил, которые указаны в prometheus.yml
+Grafana используется для визуализации полученных данных/метрик.
+
+Node Exporter собирает и хранит системные метрики по адресу: localhost:9100/metrics или node-exporter:9100/metrics. Prometheus с определенной периодичностью (указаны в правилах) собирает данные метрики. Grafana использует Prometheus как источник данных для их визуализации в виде Дашбордов (графиков). В качестве дашборда используется общедоступный дашборд "Node exporter full" (dashboard_id: 1860)
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/Grafana.png)
+ 
+Подсистема мониторинга реализована в виде образов контейнеров, которые собраны с помощью docker compose.
+![image](https://github.com/MrCrockus/codeby-devops/diplom/img/Docker.png)
+
+docker-compose и promethus.yml для сборки подсистемы мониторинга приведены в директории "./monitoring"
+[клик](https://github.com/MrCrockus/codeby-devops/diplom/monitoring)
+!--end!--
