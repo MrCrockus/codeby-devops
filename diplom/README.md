@@ -6,10 +6,10 @@
 
 Для того, чтобы ничего не сломать в основной репе, все "махинации" проводились в отдельной репе:
 [codeby_dipl](https://github.com/MrCrockus/codeby_dipl)
-```
+
 Работа представляет из себя следующее:
 При переходе по ссылке по адресу, выводится такая страница.
-![image](https://github.com/MrCrockus/codeby-devops/diplom/img/app.png)
+<img src="img/app.png" alt="app.png">
 Предварительно необходим self-runner, чтобы запускался деплой приложения на хосте после пуша образа контейнера приложения:
 self-runner на хосте запущен в виде сервиса.
 ![image](https://github.com/MrCrockus/codeby-devops/diplom/img/selfrunner.png)
@@ -27,10 +27,9 @@ DOCKER_PASSWORD - пароль от DockerHub;
 DOCKER_REPO - Репозиторий DockerHub, куда пушатся образы собранных контейнеров;
 CONTAINER_NAME - наименование контейнера, который запускается на хосте.
 
-```
 Как работает:
 При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
-![image](https://github.com/MrCrockus/codeby-devops/diplom/img/pipeline.png)
+<img src="img/Docker.png" alt="Docker.png">
 	1. Создание образа контейнера и его пуш в репозиторий DockerHub (build_and_push), который реализует следующие этапы:
 		1.1. Выбирается ОС Ubuntu (с тэгом latest)
 		1.2. Устанавливается OpenJDK 17
