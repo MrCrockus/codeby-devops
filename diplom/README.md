@@ -89,8 +89,6 @@ Node Exporter собирает и хранит системные метрики
 </p>
 
 docker-compose и promethus.yml для сборки подсистемы мониторинга приведены в директории "./monitoring"
-[клик](https://github.com/MrCrockus/codeby-devops/diplom/monitoring)
+[клик](./monitoring)
 
 Way: :lobster: :point_right:  :shark:
-
-!--end!--
