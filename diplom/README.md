@@ -1,4 +1,6 @@
-Проект по курсу DevOps: :wave:
+:wave: :octocat:
+
+Проект по курсу DevOps: 
 
 Задача:
 Реализовать полный цикл сборки-поставки приложения, используя практики CI/CD.
@@ -34,12 +36,11 @@ self-runner на хосте запущен в виде сервиса.
 <img src="img/secrets.png" alt="secrets.png" width="600" >
 </p>
 
-```
-DOCKER_USERNAME - логин от DockerHub;
-DOCKER_PASSWORD - пароль от DockerHub;
-DOCKER_REPO - Репозиторий DockerHub, куда пушатся образы собранных контейнеров;
-CONTAINER_NAME - наименование контейнера, который запускается на хосте.
-```
+> [!NOTE]
+> DOCKER_USERNAME - логин от DockerHub;
+>DOCKER_PASSWORD - пароль от DockerHub;
+>DOCKER_REPO - Репозиторий DockerHub, куда пушатся образы собранных контейнеров;
+>CONTAINER_NAME - наименование контейнера, который запускается на хосте.
 
 Как работает:
 При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
@@ -91,4 +92,4 @@ Node Exporter собирает и хранит системные метрики
 docker-compose и promethus.yml для сборки подсистемы мониторинга приведены в директории "./monitoring"
 [клик](./monitoring)
 
-Way: :lobster: :point_right:  :shark:
+Way: :crab: :point_right:  :shark:
