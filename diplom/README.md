@@ -42,7 +42,7 @@ self-runner на хосте запущен в виде сервиса.
 >DOCKER_REPO - Репозиторий DockerHub, куда пушатся образы собранных контейнеров;\
 >DOCKER_USERNAME - логин от DockerHub.
 
-Как работает:
+**Как работает:**\
 При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
 
 <p align="center">
