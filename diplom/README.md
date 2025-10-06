@@ -37,10 +37,10 @@ self-runner на хосте запущен в виде сервиса.
 </p>
 
 > [!NOTE]
-> DOCKER_USERNAME - логин от DockerHub;\
+>CONTAINER_NAME - наименование контейнера, который запускается на хосте;\
 >DOCKER_PASSWORD - пароль от DockerHub;\
 >DOCKER_REPO - Репозиторий DockerHub, куда пушатся образы собранных контейнеров;\
->CONTAINER_NAME - наименование контейнера, который запускается на хосте.
+>DOCKER_USERNAME - логин от DockerHub.
 
 Как работает:
 При внесении изменений в ветку main (push/merge) запускается Actions workflow, который состоит из 2 задач:
